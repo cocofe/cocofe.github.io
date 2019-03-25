@@ -346,7 +346,7 @@ footer#footer {
   footer#footer .bar {
     display: flex; }
     footer#footer .bar .social {
-      display: flex;
+      display: none;
       align-items: center; }
       footer#footer .bar .social a {
         display: inline-block;
@@ -359,7 +359,8 @@ footer#footer {
           color: #333; }
     footer#footer .bar .footer {
       flex: 1;
-      padding: 1em 0; }
+      padding: 1em 0;
+      text-align: center; }
     @media only screen and (max-width: 768px) {
       footer#footer .bar {
         flex-direction: column;
