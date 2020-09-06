@@ -1,24 +1,40 @@
-<!DOCTYPE html><html><head><meta name="generator" content="Hexo 3.8.0"><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description"><title>凡事必有因 | TimeLine</title><link rel="stylesheet" type="text/css" href="/css/normalize.css"><link rel="stylesheet" type="text/css" href="/css/highlight.css"><link rel="stylesheet" type="text/css" href="/css/very-simple.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/font-awesome/4.5.0/css/font-awesome.min.css"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"></head><body><!-- include the sidebar--><!-- include ./includes/sidebar.jade--><!-- Blog title and subtitle--><header><div class="container header"><a id="logo" href="http://cocofe.cn" class="title">TimeLine</a><span class="subtitle"></span><label id="toggle-menu" for="menu" onclick=""><i class="fa fa-bars"></i></label></div></header><!-- use checkbox hack for toggle nav-bar on small screens--><input id="menu" type="checkbox"><!-- Navigation Links--><nav id="nav"><div class="container"><a href="/" class="sidebar-nav-item active">Home</a></div></nav><div id="header-margin-bar"></div><!-- gallery that comes before the header--><div class="wrapper"><div class="container post-header"><h1>凡事必有因</h1></div></div><div class="wrapper"><div class="container meta"><div class="post-time">2018-12-28</div></div></div><article><div class="container post"><p>有时候,事情做多并不一定效果就好</p>
-<p>就个人而言,多年的教育,所学的,物理,化学,生物,等大学没继续学习的知识基本就忘光了, 大学学的高数等不常用到的知识也基本都还给老师了</p>
-<p>这些年的教育给我什么?</p>
-<p>一个文凭 + 找工作技能?</p>
-<p>大城市机会多,成长快?为什么?</p>
-<p>如今找工作,借助互联网,各个大公司的招聘是面向全部各个地方的人才,并不会因为你所在的地方,而有所取舍, 当然如果要找人内推,那么也许所谓的朋友圈可能有地域上的区别,但是<code>对于技术能力强的人,并不会因为地域,而导致机会变少</code>,如果一家公司因为你工作的地方而把你pass,那种公司也不值得待,所以<code>大城市机会多</code>中的<code>机会</code>指的是什么?</p>
-<p>对于程序员而言,能力强,机会就多.可能大城市机会多,是指让你成长的机会多,能在大城市落脚的人,基本都是精英,就像一个好学校,并不只是学校老师好,实际上最主要的是学校学生好, 老师起到的作用相对较少, 县第一,第二的学校学生,可能中考成绩只差不到10分,但是县第一的平均水平可能是本一,而县第二的平均水平是本二</p>
-<p>所以本质上是大城市的人更好吧,优秀的人更多,竞争压力越大,自己成长的也越快,</p>
-<blockquote>
-<p>为什么我不建议你轻易逃离北上广，因为这里虽然残酷冰冷，但永远能接受到新的知识和技术，永远能第一时间享受最新科技成果</p>
-</blockquote>
-<blockquote>
-<p>其实 水涨船高吧 就像做技术的人 如果和一群一般般的人一起工作 肯定比不上和一群大牛一起工作 平台很重要 离开平台还能赚钱 那得自己很厉害 但是大部分的人 还是靠平台的</p>
-</blockquote>
-<p>埋头苦干是傻的,多想想为什么这么做,有何意义?</p>
-<p>这周上线没测出一个bug, 因为多线程导致的,在测试环境中没测试出来</p>
-<p>出现bug的代码,是因为自己没想清楚, 并不是最优解(实际上写的可以更简单), 但是当时没多想,碰到问题, 写上这行代码, 可以正常运行, 测试也没问题, 就没多想, </p>
-<p>看来写好的代码,利人利己呀!!!</p>
-<p>每一行代码都要说出其意义, 每多写一行代码, 就多一点出问题的概率</p>
-<p>不只是代码, 凡事都要多想想, 凡事必有因, Redis 本质上用到的也是最基础的几种数据结构, 面对不同的应用场景, 各个数据结构有不同的组合, 为什么这么设计, 只有结合业务, 技术才能落地, 才有用处, 空谈技术,概念, 都是耍流氓!!!</p>
-</div><!-- comment system--><div class="container"><hr></div></article><footer id="footer"><div class="container"><div class="bar"><div class="social"></div><div class="footer">© 2019 <a href="http://cocofe.cn" rel="nofollow">cocofe</a>. Powered by <a rel="nofollow" target="_blank" href="https://hexo.io">Hexo</a>. Theme <a target="_blank" href="https://github.com/lotabout/very-simple">very-simple</a>.</div></div></div></footer><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.css"><script src="//cdn.bootcss.com/jquery/2.0.3/jquery.min.js"></script><script src="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.pack.js"></script><script>$(document).ready(function() {
-    $(".fancybox").fancybox();
-});
-</script></body></html>
+extends base
+
+block title
+  title= page.title + " | " + config.title
+
+block main
+
+  // gallery that comes before the header
+  if page.photos
+     if page.photos.length
+      .article-gallery
+        .article-gallery-photos.container
+          for photo in page.photos
+            a.article-gallery-img.fancybox(href=url_for(photo), rel="gallery_" + page._id)
+              img(src=url_for(photo), itemprop="image")
+
+  .wrapper
+    .container.post-header
+      h1: = page.title
+
+  .wrapper
+    .container.meta
+      .post-time= page.date.format(config.date_format)
+      if (page.categories && page.categories.length)
+        .post-categories
+          != list_categories(page.categories, {show_count: false, class: 'post-category', style: 'none', separator: '>'})
+      if (page.tags && page.tags.length)
+        .post-tags
+          != list_tags(page.tags, {show_count: false, class: 'post-tag', style:'none', separator:'/'})
+
+
+  article
+    .container.post
+      != page.content
+
+    // comment system
+    .container
+      hr
+      include _partial/comments
+
