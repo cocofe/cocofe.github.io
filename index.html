@@ -1,41 +1,76 @@
-extends base
-- var current_title = page.title || tag.name || category.name || site.title
-
-block title
-  title= (config.title ? (config.subtitle ? config.title + " | " + config.subtitle : config.title) : "")
-
-block main
-
-  article
-    #index-main.container.entries
-      for post in page.posts.toArray()
-        .post-entry
-          .post-time= post.date.format(config.detail_date_format)
-          .post-desc
-            .post-title
-              if post.link
-                  a(href=url_for(post.link),target="_blank", itemprop="url")= post.title
-              else
-                  a(href=url_for(post.path))= post.title
-
-            .post-content
-              if post.description
-                != post.description
-              else if post.excerpt
-                != post.excerpt
-              else if post.content
-                - var br = post.content.indexOf('COCOFE')
-                if br < 0
-                  != post.content
-                else
-                  != post.content.substring(0, br + 4)
-
-            .post-meta
-              if (post.tags && post.tags.length)
-                .post-tags
-                  != list_tags(post.tags, {show_count: false, class: 'post-tag', style:'none', separator:'/'})
-              if (post.categories && post.categories.length)
-                .post-categories
-                  != list_categories(post.categories, {show_count: false, class: 'post-category', style: 'none', separator: '>'})
-
-  include _partial/paginator.jade
+<!DOCTYPE html><html><head><meta name="generator" content="Hexo 3.9.0"><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description"><title>TimeLine</title><link rel="stylesheet" type="text/css" href="/css/normalize.css"><link rel="stylesheet" type="text/css" href="/css/highlight.css"><link rel="stylesheet" type="text/css" href="/css/very-simple.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/font-awesome/4.5.0/css/font-awesome.min.css"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"></head><body><!-- include the sidebar--><!-- include ./includes/sidebar.jade--><!-- Blog title and subtitle--><header><div class="container header"><a id="logo" href="http://cocofe.cn" class="title">TimeLine</a><span class="subtitle"></span><label id="toggle-menu" for="menu" onclick><i class="fa fa-bars"></i></label></div></header><!-- use checkbox hack for toggle nav-bar on small screens--><input id="menu" type="checkbox"><!-- Navigation Links--><nav id="nav"><div class="container"><a href="/" class="sidebar-nav-item active">Home</a></div></nav><div id="header-margin-bar"></div><article><div id="index-main" class="container entries"><div class="post-entry"><div class="post-time">2019-11-28 23:31:33</div><div class="post-desc"><div class="post-title"><a href="/2019/11/28/周期性迷茫/">周期性迷茫</a></div><div class="post-content"><p>周期性迷茫, 说多了矫情, 不满意, 是否等真失去了才会后悔</p>
+<p>谈谈理性的东西:</p>
+<p>打心底还是敬佩牛逼的人, 讨厌只会嘴上BB, 没啥能力的人, 不喜欢不负责任, 虚伪, 轻佻的人</p>
+<p>希望自己别成为自己讨厌的人, 多努力, 多碰到些让自己敬佩的人</p>
+<p>高中生物老师的随性最让我钦佩, 喜欢这类人, 洒脱, 自由, 这也是我最缺少的东西</p>
+<p>走出墙外见识过外面的世界后, 才越来越爱国,才知道所谓的自由也就那么回事, 充斥着虚伪 </p>
+<p>没有绝对的自由, 你有自由的权利, 但是你也得承受的起你自由的代价, 做人得有自知之明, 别看低自己, 也别看低别人</p>
+<p>人言可畏, 互联网的世界把人与人之间的距离拉近了, 但是却没法消除歧视和不和</p>
+<p>这世界不缺傻子, 喝风辟谷治癌, 量子速读, 水氢发动机,这类层出不穷,所以骗子赚的盆满锅满, 傻子不值得同情</p>
+<p>有些被骗的人是真傻, 有些可能是假傻, 人本质就是逐利, 资本盘活整个社会中的资产, 带动经济增长</p>
+<p>要感谢资本, 但是资本是贪婪的, 需要国家去监管, 国企少了些贪婪, 但是确充满了低效和腐败, 垄断滋生臭虫, 我相信没有绝对的铁饭碗,没有能力的人迟早要被淘汰,现在所谓的体制内的铁饭碗, 在未来绝大部分会被一个一个被取缔, 也该是时候把这体制内的一些臭虫给消灭掉, 只有有危机意识, 才会让人们提高效率, 否则只会催生出一堆废物</p>
+<p>全天下的乌鸦一般黑, 把自己活好就行, 怎么活好? 活好当下吧, 道理都懂, 但是还是迷茫, 有解不?感觉无解</p>
+<p>不够自律, 效率不高, 能力还不够, 咋办?不是一时半会能解</p>
+<p>情感越来越不轻易流露, 感觉自己越来越冷漠了, 越来越不信, 中立的话语太少, 也分不清, 很多的信息都是带有立场的, 一封诉苦书, 也许背后是一堆利益瓜葛, 太多东西我不信, 还是要多读书, 自己才有评判依据, 没有绝对的真理, 自己觉得对就好, 喜欢白岩松的睿智, 心底有些墨水的人是看的出来的, 人还是要脚踏实地点, 烦心事还是要面对, 尽人事而安天命, 以后会如何走? 不知, 还是先做好现在的事, 珍惜现在的人吧!!</p>
+<p>一切能用钱解决的事, 都不是事, 努力靠本事赚钱吧, 就矫情到这吧</p>
+</div><div class="post-meta"></div></div></div><div class="post-entry"><div class="post-time">2019-10-18 13:31:38</div><div class="post-desc"><div class="post-title"><a href="/2019/10/18/没有绝对的正确/">没有绝对的正确</a></div><div class="post-content"><p>为何各国禁止电子烟?</p>
+<ul>
+<li><p>当然电子烟也是烟, 烟的危害就不说了, 都清楚</p>
+</li>
+<li><p>每年吸烟死了那么多人, 没有多少媒体/舆论去谈这个, 电子烟造成的危害, 基本每起都是新闻</p>
+</li>
+</ul>
+<p>  这也是双标吧, 毕竟gov的奶酪不能动, 这道理各国都适用</p>
+</div><div class="post-meta"></div></div></div><div class="post-entry"><div class="post-time">2019-08-30 15:03:58</div><div class="post-desc"><div class="post-title"><a href="/2019/08/30/忘了密码最安全/">忘了密码最安全</a></div><div class="post-content"><p>每隔一段时间强制修改密码, 真是愚蠢的设计</p>
+</div><div class="post-meta"></div></div></div><div class="post-entry"><div class="post-time">2019-07-29 23:28:35</div><div class="post-desc"><div class="post-title"><a href="/2019/07/29/菜是原罪/">菜是原罪</a></div><div class="post-content"><p>菜是原罪,  差距越来越大了, 不得行</p>
+</div><div class="post-meta"></div></div></div><div class="post-entry"><div class="post-time">2019-07-22 13:35:29</div><div class="post-desc"><div class="post-title"><a href="/2019/07/22/快回来-自律/">快回来, 自律!!</a></div><div class="post-content"><p>快回来, 自律!!!, 不要再浪费生命了</p>
+</div><div class="post-meta"></div></div></div><div class="post-entry"><div class="post-time">2019-07-14 18:20:00</div><div class="post-desc"><div class="post-title"><a href="/2019/07/14/ugly_chinese/">跪久了就起不来了</a></div><div class="post-content"><p>在中美贸易战开打后, 中国出台了所谓的去除<code>崇洋媚外</code>措施,  修改<code>洋</code>名称, 我只想说这真是愚蠢的措施, 能想出这种政策的政府官员, 首要考虑的应该是给上级领导有个交代吧, 愚蠢之极, 治标不治本有何用, 与掩耳盗铃一般</p>
+<p><code>崇洋媚外</code>也许已经深入某些中国人的骨子里, 尤其是那些一味地想着讨好上级, 溜须拍马的政府官员, 如果有药的话先给这些官员治下.</p>
+<ul>
+<li>福州一个埃及留学生辱骂交警, 被福建农林大学罚写检讨, 留校查看, 中国公民在网上辱骂警察, 被拘留一周, </li>
+</ul>
+<ul>
+<li>山东大学一个津巴布韦的留学生受伤，官方招募25个陪护志愿者而且承包全部餐费交通费</li>
+</ul>
+<ul>
+<li>山东大学学伴计划, 一人可以有三个学伴(也许留学生顺便还能解决下其他需求, 很好的政策)</li>
+</ul>
+<p>中国留学吸引力和含金量还是比美国, 等欧洲国家差一些, 据说绝大多数是发展中国家比如非洲,埃及,等地区</p>
+<p>也许在自己国家是个loser,但是在中国能混的风生水起, 毕竟中国人钱多, 好客</p>
+<p>为什么中国高校那么欢迎外国留学生, 因为留学生人数越多, 表示政绩越优秀, 也许就能获得更多的利益, 归根结底还是制度不行, 对于高校留学生情况考核不应简单粗暴的看人数, 更重要的是质量,还有会出现山东大学学伴计划这种愚蠢的行为, 就是一些官员只懂得形式主义, 溜须拍马导致的, </p>
+<p>现在政府, 凡事总想一刀切最简单, 电影, 电视剧, 太血腥删禁, 游戏见血不行, 宣传早恋不行等等等等, 对于一个心智健康的成年人难道会因为一些血腥,暴力的影片游戏而迷失自己, 盲目模仿里面的内容吗? 最好的政策是分级制度而非一刀切的删除, 禁止,下架</p>
+<p>普通民众在媒体上看到的,是网民应该看到或者可以看到的内容, 媒体是政客宣传的一个重要工具, 舆论是可以控制监管的, 要想明确某条新闻是否是假新闻, 很难, 但是能做到的只能是保有独立思考的能力, 多看下不同来源的相关新闻, 结合自己的经验来判断, </p>
+<p>台湾亲日, 香港亲英,  其中可能有很大一片人群是年轻人, 我觉得本质原因是他们从小到大所受的教育导致的, 并不能怪这些人, 比如就有很多的台湾人不清楚南京大屠杀, 不清楚很多中国的历史, 为什么不知道? 因为他们历史书本上没有</p>
+<p>治标不治本, 见效快, 好看的政策, 很多政府官员喜欢, 只要能升官就好</p>
+<p>这种得治, 怎么治? 靠相信官员能自觉为人民着想是奢望, 本质解决方法是能优化官员绩效考核, 把这种假大空的愚蠢政策当做减分处理, 每个政策能做到终生责任制, 追究到底</p>
+<p>人们思想得治, 本质上还是制度还不够完善, 芯片一直像扶不起的阿斗, 为什么?缺钱吗? 不, 国家给的钱不少,但是绝大多数钱都被一些蛀虫薅羊毛薅走的, 这能怪那些蛀虫品行不行吗? 不, 人就是逐利的动物, 他们的行为是可预期的, 错的是监管不到位, 没有及时发现这些蛀虫</p>
+<p>为什么很多电子专业出生的大学生不去搞芯片? 因为工资低, 前途不太光明, 爱国无私奉献固然感人, 但是用它来让高校毕业生去投身芯片行业, 是愚蠢的想法, 高明的政策是让那些人觉得芯片行业是一片蓝海, 值得承受风险投入, 来获取等价的回报</p>
+<p>一个行业有利可图, 自然会有人做, 存在竞争, 不搞垄断, 政府只要维持好公平的竞争环境, 这个行业自然会越来越好, 因为只有自己的产品好于市场平均水平, 就有利可图.</p>
+<p>因为逐利, 会带动行业越来越好</p>
+<p> 绝大多数人, 没那么无私, 也不想那么无私, 垃圾回收, 只靠罚还不行, 还得能让遵守垃圾回收的企业和个人获得利益才能事半功倍.</p>
+</div><div class="post-meta"></div></div></div><div class="post-entry"><div class="post-time">2019-05-14 00:33:07</div><div class="post-desc"><div class="post-title"><a href="/2019/05/14/天真是种福气/">天真是种福气</a></div><div class="post-content"><p>总有那么些人,天真, 阳光,会让你放下心中的戒备,让你愿意发自内心的去相信她</p>
+</div><div class="post-meta"></div></div></div><div class="post-entry"><div class="post-time">2019-04-29 20:58:00</div><div class="post-desc"><div class="post-title"><a href="/2019/04/29/赚钱秘方/">赚钱秘方</a></div><div class="post-content"><p>开荒赚第一桶金或者卖工具给开荒的人皆有利可图</p>
+</div><div class="post-meta"></div></div></div><div class="post-entry"><div class="post-time">2019-03-25 21:01:37</div><div class="post-desc"><div class="post-title"><a href="/2019/03/25/又到了躁动的季节/">又到了躁动的季节</a></div><div class="post-content"><p>最近有点无比烦躁, 不知是对自己要求太高还是确实自己能力太菜,总觉得自己实在太菜,自制力太差,对自己不太满意,压力有点大呀,有点想逃避,</p>
+<p>没有功利性,发自好奇心的去学习技术最不让人觉得疲惫了</p>
+<p>怕自己对技术失去热情,但是打心底佩服技术牛逼的大佬,每当看到真正技术牛逼的大佬时,总会燃起努力提高技术的想法, 还是最喜欢大学时候,自习学习技术的时光了,没有压力,什么感兴趣学什么,也许当初真该考个研,</p>
+<p>越强迫自己做事,心底里越是反抗,努力调整好心态吧,保持对技术的好奇心!!!!</p>
+<p>加油吧, <code>尽人事而安天命</code></p>
+<p><img src="http://image.cocofe.cn/blog/2019-08-23-160410.jpg" alt></p>
+</div><div class="post-meta"></div></div></div><div class="post-entry"><div class="post-time">2019-03-12 22:49:48</div><div class="post-desc"><div class="post-title"><a href="/2019/03/12/好的代码-让人心情愉悦/">好的代码,让人心情愉悦</a></div><div class="post-content"><ul>
+<li><p>Fix一个毫无头绪的BUG</p>
+</li>
+<li><p>写出一个自认为好的代码</p>
+</li>
+<li>设计的方案受到肯定</li>
+</ul>
+<p>简单的快乐!!!!</p>
+<p><strong>希望自己保持对技术的好奇心,对好代码的追求</strong></p>
+</div><div class="post-meta"></div></div></div></div></article><div class="container page-navigator-wrapper"><div class="page-navigator"><span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a></div></div><footer id="footer"><div class="container"><div class="bar"><div class="social"></div><div class="footer">© 2020 <a href="http://cocofe.cn" rel="nofollow">cocofe</a>. Powered by <a rel="nofollow" target="_blank" href="https://hexo.io">Hexo</a>. Theme <a target="_blank" href="https://github.com/lotabout/very-simple">very-simple</a>.</div></div></div></footer><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.css"><script src="//cdn.bootcss.com/jquery/2.0.3/jquery.min.js"></script><script src="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.pack.js"></script><script>$(document).ready(function() {
+    $(".fancybox").fancybox();
+});
+</script><script>(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+e.src='//www.google-analytics.com/analytics.js';
+r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+ga('create','');ga('send','pageview');</script></body></html>
